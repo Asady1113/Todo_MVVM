@@ -9,6 +9,7 @@ import UIKit
 
 final class Router {
     
+    // シングルトン
     static let shared: Router = .init()
     private init() {}
     
