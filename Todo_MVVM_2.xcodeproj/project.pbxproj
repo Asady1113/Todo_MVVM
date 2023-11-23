@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2FAC9E2627A4D547090CDCD2 /* Pods_Todo_MVVM_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89C8F5A8345B0BCC1EB6ABE /* Pods_Todo_MVVM_2.framework */; };
+		9496CCC82B0F414800CA2B32 /* StoryBoard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496CCC72B0F414800CA2B32 /* StoryBoard+.swift */; };
+		9496CCCA2B0F420C00CA2B32 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496CCC92B0F420C00CA2B32 /* Router.swift */; };
 		94A060EB2B0F351000C8AF60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A060EA2B0F351000C8AF60 /* AppDelegate.swift */; };
 		94A060ED2B0F351000C8AF60 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A060EC2B0F351000C8AF60 /* SceneDelegate.swift */; };
-		94A060EF2B0F351000C8AF60 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A060EE2B0F351000C8AF60 /* ViewController.swift */; };
 		94A060F22B0F351000C8AF60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A060F02B0F351000C8AF60 /* Main.storyboard */; };
 		94A060F42B0F351100C8AF60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94A060F32B0F351100C8AF60 /* Assets.xcassets */; };
 		94A060F72B0F351100C8AF60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94A060F52B0F351100C8AF60 /* LaunchScreen.storyboard */; };
@@ -28,10 +29,11 @@
 
 /* Begin PBXFileReference section */
 		53A164A37F6FFF9A244E20FB /* Pods-Todo_MVVM_2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo_MVVM_2.debug.xcconfig"; path = "Target Support Files/Pods-Todo_MVVM_2/Pods-Todo_MVVM_2.debug.xcconfig"; sourceTree = "<group>"; };
+		9496CCC72B0F414800CA2B32 /* StoryBoard+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoryBoard+.swift"; sourceTree = "<group>"; };
+		9496CCC92B0F420C00CA2B32 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		94A060E72B0F351000C8AF60 /* Todo_MVVM_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo_MVVM_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94A060EA2B0F351000C8AF60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94A060EC2B0F351000C8AF60 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		94A060EE2B0F351000C8AF60 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		94A060F12B0F351000C8AF60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		94A060F32B0F351100C8AF60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94A060F62B0F351100C8AF60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9496CCC62B0F412800CA2B32 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				9496CCC72B0F414800CA2B32 /* StoryBoard+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		94A060DE2B0F351000C8AF60 = {
 			isa = PBXGroup;
 			children = (
@@ -85,11 +95,12 @@
 			children = (
 				94A060EA2B0F351000C8AF60 /* AppDelegate.swift */,
 				94A060EC2B0F351000C8AF60 /* SceneDelegate.swift */,
-				94A060EE2B0F351000C8AF60 /* ViewController.swift */,
 				94A060FE2B0F374600C8AF60 /* Task.swift */,
+				9496CCC62B0F412800CA2B32 /* Extension */,
 				94A061002B0F376800C8AF60 /* Create */,
 				94A061092B0F37F000C8AF60 /* Detail */,
 				94A0610E2B0F387600C8AF60 /* Main */,
+				9496CCC92B0F420C00CA2B32 /* Router.swift */,
 				94A060F32B0F351100C8AF60 /* Assets.xcassets */,
 				94A060F52B0F351100C8AF60 /* LaunchScreen.storyboard */,
 				94A060F82B0F351100C8AF60 /* Info.plist */,
@@ -265,14 +276,15 @@
 				94A061062B0F37C200C8AF60 /* CreateViewModel.swift in Sources */,
 				94A061042B0F37A100C8AF60 /* CreateViewController.swift in Sources */,
 				94A060FF2B0F374600C8AF60 /* Task.swift in Sources */,
-				94A060EF2B0F351000C8AF60 /* ViewController.swift in Sources */,
 				94A061082B0F37E000C8AF60 /* CreateModel.swift in Sources */,
 				94A061102B0F38AE00C8AF60 /* MainModel.swift in Sources */,
 				94A060EB2B0F351000C8AF60 /* AppDelegate.swift in Sources */,
 				94A060ED2B0F351000C8AF60 /* SceneDelegate.swift in Sources */,
+				9496CCC82B0F414800CA2B32 /* StoryBoard+.swift in Sources */,
 				94A0610B2B0F381300C8AF60 /* DetailViewController.swift in Sources */,
 				94A061122B0F38C100C8AF60 /* MainViewController.swift in Sources */,
 				94A061142B0F38D700C8AF60 /* MainViewModel.swift in Sources */,
+				9496CCCA2B0F420C00CA2B32 /* Router.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

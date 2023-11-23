@@ -51,18 +51,14 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func toCreate() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Create", bundle: Bundle.main)
-        if let createViewController = storyboard.instantiateViewController(withIdentifier: "CreateViewController") as? CreateViewController {
-            self.present(createViewController, animated: true, completion: nil)
-        }
+        Router.shared.showCreate(from: self)
     }
     
     private func toDetail(selectedTask: Task) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: Bundle.main)
-        if let detailViewController = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
-            detailViewController.setSelectedTask(selectedTask: selectedTask)
-            self.present(detailViewController, animated: true, completion: nil)
-        }
+        // 値わたし（Routerに書くべきな気もする）
+        let vc = UIStoryboard.detailViewController
+        vc.setSelectedTask(selectedTask: selectedTask)
+        Router.shared.showDetail(from: self)
     }
     
 }
