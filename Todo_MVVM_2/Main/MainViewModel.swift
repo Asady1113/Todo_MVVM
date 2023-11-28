@@ -16,7 +16,7 @@ protocol MainViewModelInput {
 }
 
 protocol MainViewModelOutput {
-    var selectedTask: PublishRelay<Task> { get }
+    var selectedTask_Rx: PublishRelay<Task> { get }
 }
 
 protocol MainViewModelType {
@@ -33,7 +33,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
     let cellDidTap_Rx = PublishRelay<IndexPath>()  // タップされたtableViewCellのindexPath
     
     // output(UIに表示したいものを出力)
-    let selectedTask = PublishRelay<Task>()  // 選択されたTask
+    let selectedTask_Rx = PublishRelay<Task>()  // 選択されたTask
     
     private let disposeBag = DisposeBag()
     // TodoList
@@ -50,7 +50,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
             .subscribe(onNext: { indexPath in
                 let selectedTask = self.taskArr[indexPath.row]
                 // outputのselectedTaskに値を流す
-                self.output.selectedTask.accept(selectedTask)
+                self.output.selectedTask_Rx.accept(selectedTask)
             })
             .disposed(by: disposeBag)
     }

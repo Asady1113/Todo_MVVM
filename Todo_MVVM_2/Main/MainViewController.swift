@@ -43,7 +43,7 @@ class MainViewController: UIViewController {
     // 出力に関するバインディング(ViewModelから来た値をUIに表示)
     private func bindOutput() {
         // ViewModelから選択された要素を受け取って画面遷移
-        mainViewModel.output.selectedTask
+        mainViewModel.output.selectedTask_Rx
             .subscribe(onNext: { [weak self] Task in
                 self?.toDetail(selectedTask: Task)
             })

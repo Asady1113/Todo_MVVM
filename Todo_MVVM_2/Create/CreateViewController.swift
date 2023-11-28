@@ -28,16 +28,20 @@ class CreateViewController: UIViewController {
     
     // 入力に関するバインディング(UIからの入力をViewModelに伝達)
     private func bindInput() {
-        // 保存ボタンがタップされたら
-        createButton.rx.tap.subscribe(onNext: {
-            self.createViewModel.createTask(title: self.titleTextField.text ?? "", memo: self.memoTextView.text ?? "")
+        // 保存ボタンがタップされたらtextをタプルで渡す
+        createButton.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            if let titleText = self.titleTextField.text,
+               let memoText = self.memoTextView.text {
+                let textDataTuple = (titleText, memoText)
+                self.createViewModel.input.createButtonTap_Rx.accept(textDataTuple)
+            }
         }).disposed(by: disposeBag)
-
     }
     
     // 出力に関するバインディング(ViewModelから来た値をUIに表示)
     private func bindOutput() {
-        
+        // 保存されたら前の画面に戻る
     }
 
 }
