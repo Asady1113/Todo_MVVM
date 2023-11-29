@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
     
     private func displaySelectedTask() {
         titleTextField.text = selectedTask.title
-        titleTextField.text = selectedTask.memo
+        memoTextView.text = selectedTask.memo
     }
     
     // 入力に関するバインディング(UIからの入力をViewModelに伝達)

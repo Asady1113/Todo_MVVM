@@ -64,10 +64,7 @@ class MainViewController: UIViewController {
     }
     
     private func toDetail(selectedTask: Task) {
-        // 値わたし（Routerに書くべきな気もする）
-        let vc = UIStoryboard.detailViewController
-        vc.setSelectedTask(selectedTask: selectedTask)
-        Router.shared.showDetail(from: self)
+        Router.shared.showDetail(from: self, selectedTask: selectedTask)
     }
     
 }

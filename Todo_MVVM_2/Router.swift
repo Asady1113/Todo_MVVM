@@ -29,8 +29,10 @@ final class Router {
         show(from: from, next: vc)
     }
     
-    func showDetail(from: UIViewController) {
+    // Detailへの遷移は値わたしを伴う
+    func showDetail(from: UIViewController, selectedTask: Task) {
         let vc = UIStoryboard.detailViewController
+        vc.setSelectedTask(selectedTask: selectedTask)
         show(from: from, next: vc)
     }
 }

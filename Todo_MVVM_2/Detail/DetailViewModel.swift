@@ -66,7 +66,12 @@ class DetailViewModel: DetailViewModelInput, DetailViewModelOutput, DetailViewMo
     }
     
     private func updateTask(selectedTask: Task, newTitle: String, newMemo: String) {
-        print("更新します！")
+        if newTitle == "" || newMemo == "" {
+            // 入力してね〜ってKRHudを出したい（Viewの仕事かな）
+            return
+        } else if let id = selectedTask.id {
+            DetailModel.updateTask(id: id, newTitle: newTitle, newMemo: newMemo)
+        }
     }
     
     private func deleteTask(selectedTask: Task) {

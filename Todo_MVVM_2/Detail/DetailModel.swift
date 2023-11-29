@@ -6,7 +6,19 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DetailModel {
+    // 更新の関数
+    static func updateTask(id: String, newTitle: String, newMemo: String) {
+        if let realm = try? Realm() {
+            let selectedTask = realm.objects(Task.self).filter("id == %@", id).first
+            try? realm.write {
+                selectedTask?.title = newTitle
+                selectedTask?.memo = newMemo
+                print("success")
+            }
+        }
+    }
     
 }
