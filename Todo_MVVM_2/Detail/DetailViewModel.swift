@@ -11,7 +11,7 @@ import RxCocoa
 
 // protocolでinputとoutputを定義しておく(入力なのか出力なのか分かりやすくするため)
 protocol DetailViewModelInput {
-    var updateButtonTap_Rx: PublishRelay<Task> { get }
+    var updateButtonTap_Rx: PublishRelay<(Task,String,String)> { get }
     var deleteButtonTap_Rx: PublishRelay<Task> { get }
 }
 
@@ -31,7 +31,7 @@ class DetailViewModel: DetailViewModelInput, DetailViewModelOutput, DetailViewMo
     var output: DetailViewModelOutput { return self }
     
     // input(入力されたデータを受け取る
-    let updateButtonTap_Rx = PublishRelay<Task>() // 更新ボタンを検知し、タスクを受け取る
+    let updateButtonTap_Rx = PublishRelay<(Task,String,String)>() // 更新ボタンを検知し、タスクを受け取る
     let deleteButtonTap_Rx = PublishRelay<Task>() // 削除ボタンを検知し、タスクを受け取る
     
     // output(UIに表示したいものを出力)
@@ -48,8 +48,8 @@ class DetailViewModel: DetailViewModelInput, DetailViewModelOutput, DetailViewMo
     private func bind() {
         // 更新ボタンを検知したら、updateTaskを実行する
         updateButtonTap_Rx
-            .subscribe(onNext: { selectedTask in
-                self.updateTask(selectedTask: selectedTask)
+            .subscribe(onNext: { updateDataTupple in
+                self.updateTask(selectedTask: updateDataTupple.0, newTitle: updateDataTupple.1, newMemo: updateDataTupple.2)
                 // 更新したら、Viewに向けて出力する
                 self.output.updateCompleted_Rx.accept(())
             })
@@ -59,13 +59,13 @@ class DetailViewModel: DetailViewModelInput, DetailViewModelOutput, DetailViewMo
         deleteButtonTap_Rx
             .subscribe(onNext: { selectedTask in
                 self.deleteTask(selectedTask: selectedTask)
-                // 更新したら、Viewに向けて出力する
+                // 削除したら、Viewに向けて出力する
                 self.output.deleteCompleted_Rx.accept(())
             })
             .disposed(by: disposeBag)
     }
     
-    private func updateTask(selectedTask: Task) {
+    private func updateTask(selectedTask: Task, newTitle: String, newMemo: String) {
         print("更新します！")
     }
     

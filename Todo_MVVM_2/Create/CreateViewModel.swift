@@ -57,7 +57,9 @@ class CreateViewModel: CreateViewModelInput, CreateViewModelOutput, CreateViewMo
             // 入力してね〜ってKRHudを出したい（Viewの仕事かな）
             return
         }
-        CreateModel.createTask(title: title, memo: memo)
+        // ID生成
+        let id = UUID().uuidString
+        CreateModel.createTask(id: id, title: title, memo: memo)
     }
     
 }

@@ -43,16 +43,24 @@ class DetailViewController: UIViewController {
     // 入力に関するバインディング(UIからの入力をViewModelに伝達)
     private func bindInput() {
         // 更新ボタンがタップされたら、タスクを渡す
-        updateButton.rx.tap.subscribe(onNext: { [weak self] in
-            guard let self = self else { return }
-            self.detailViewModel.input.updateButtonTap_Rx.accept(self.selectedTask)
-        }).disposed(by: disposeBag)
+        updateButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                if let titleText = self.titleTextField.text,
+                   let memoText = self.memoTextView.text {
+                    let updateDataTupple = (self.selectedTask, titleText, memoText)
+                    self.detailViewModel.input.updateButtonTap_Rx.accept(updateDataTupple)
+                }
+            })
+            .disposed(by: disposeBag)
         
         // 削除ボタンがタップされたら、タスクを渡す
-        deleteButton.rx.tap.subscribe(onNext: { [weak self] in
+        deleteButton.rx.tap
+            .subscribe(onNext: { [weak self] in
             guard let self = self else { return }
             self.detailViewModel.input.deleteButtonTap_Rx.accept(self.selectedTask)
-        }).disposed(by: disposeBag)
+        })
+            .disposed(by: disposeBag)
     }
     
     // 出力に関するバインディング(ViewModelから来た値をUIに表示)

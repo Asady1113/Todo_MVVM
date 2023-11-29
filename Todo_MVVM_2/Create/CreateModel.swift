@@ -9,10 +9,10 @@ import Foundation
 import RealmSwift
 
 class CreateModel {
-    static func createTask(title: String, memo: String) {
+    static func createTask(id: String, title: String, memo: String) {
         if let realm = try? Realm() {
             let task = Task()
-            task.add(title: title, memo: memo)
+            task.add(id: id, title: title, memo: memo)
             try? realm.write {
                 realm.add(task)
                 print("success")
