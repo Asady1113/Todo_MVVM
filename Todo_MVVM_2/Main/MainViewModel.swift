@@ -13,10 +13,12 @@ import RxCocoa
 // protocolでinputとoutputを定義しておく(入力なのか出力なのか分かりやすくするため)
 protocol MainViewModelInput {
     var cellDidTap_Rx: PublishRelay<IndexPath> { get }
+    var viewWillAppear_Rx: PublishRelay<Void> { get }
 }
 
 protocol MainViewModelOutput {
     var selectedTask_Rx: PublishRelay<Task> { get }
+    var readCompleted_Rx: PublishRelay<Void> { get }
 }
 
 protocol MainViewModelType {
@@ -31,9 +33,11 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
     
     // input
     let cellDidTap_Rx = PublishRelay<IndexPath>()  // タップされたtableViewCellのindexPath
+    let viewWillAppear_Rx = PublishRelay<Void>() // viewWillAppearが呼ばれたことを検知
     
     // output(UIに表示したいものを出力)
     let selectedTask_Rx = PublishRelay<Task>()  // 選択されたTask
+    let readCompleted_Rx = PublishRelay<Void>() // 読み込み完了を伝達
     
     private let disposeBag = DisposeBag()
     // TodoList
@@ -45,6 +49,15 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
     }
     
     private func bind() {
+        // viewWillAppearを検知すると、readTaskを行う
+        viewWillAppear_Rx
+            .subscribe(onNext: {
+                self.readTask()
+                // 読み込みが完了したことを伝達
+                self.output.readCompleted_Rx.accept(())
+            })
+            .disposed(by: disposeBag)
+        
         // cellタップを検知すると、選択されているindexPath.row番目の要素を渡す
         cellDidTap_Rx
             .subscribe(onNext: { indexPath in
@@ -57,7 +70,7 @@ class MainViewModel: MainViewModelInput, MainViewModelOutput, MainViewModelType 
     
     // 関数はprivateにした方がいい
     // todoの読み込み
-    func readTask() {
+    private func readTask() {
         taskArr = [Task]()
         taskArr = MainModel.readTask()
     }

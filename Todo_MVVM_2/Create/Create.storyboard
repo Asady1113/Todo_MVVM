@@ -11,7 +11,7 @@
         <!--Create View Controller-->
         <scene sceneID="XmH-T9-bxN">
             <objects>
-                <viewController storyboardIdentifier="CreateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wtq-0X-e0s" customClass="CreateViewController" customModule="Todo_MVVM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wtq-0X-e0s" customClass="CreateViewController" customModule="Todo_MVVM_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NZA-bH-ODa">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

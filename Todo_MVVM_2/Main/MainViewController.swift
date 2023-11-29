@@ -25,13 +25,15 @@ class MainViewController: UIViewController {
         bindOutput()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        // Appear時にデータを読み込む（Viewdidloadでもいい）
-        mainViewModel.readTask()
-    }
-    
     // 入力に関するバインディング(UIからの入力をViewModelに伝達)
     private func bindInput() {
+        // Appear時にデータを読み込む
+        rx.methodInvoked(#selector(UIViewController.viewWillAppear))
+            .subscribe(onNext: { _ in
+                self.mainViewModel.input.viewWillAppear_Rx.accept(())
+            })
+            .disposed(by: disposeBag)
+        
         // セルがタップされたら、ViewModelにindexPathを渡す
         memoTableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
@@ -42,6 +44,13 @@ class MainViewController: UIViewController {
     
     // 出力に関するバインディング(ViewModelから来た値をUIに表示)
     private func bindOutput() {
+        // 読み込みが完了したらTableViewをリロード
+        mainViewModel.output.readCompleted_Rx
+            .subscribe(onNext: {
+                self.memoTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         // ViewModelから選択された要素を受け取って画面遷移
         mainViewModel.output.selectedTask_Rx
             .subscribe(onNext: { [weak self] Task in
