@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2FAC9E2627A4D547090CDCD2 /* Pods_Todo_MVVM_2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C89C8F5A8345B0BCC1EB6ABE /* Pods_Todo_MVVM_2.framework */; };
+		945FE81C2B1723EE00F7A60F /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945FE81B2B1723EE00F7A60F /* DetailModel.swift */; };
+		945FE81E2B1723FF00F7A60F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945FE81D2B1723FF00F7A60F /* DetailViewModel.swift */; };
 		9496CCC82B0F414800CA2B32 /* StoryBoard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496CCC72B0F414800CA2B32 /* StoryBoard+.swift */; };
 		9496CCCA2B0F420C00CA2B32 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9496CCC92B0F420C00CA2B32 /* Router.swift */; };
 		94A060EB2B0F351000C8AF60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A060EA2B0F351000C8AF60 /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		53A164A37F6FFF9A244E20FB /* Pods-Todo_MVVM_2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo_MVVM_2.debug.xcconfig"; path = "Target Support Files/Pods-Todo_MVVM_2/Pods-Todo_MVVM_2.debug.xcconfig"; sourceTree = "<group>"; };
+		945FE81B2B1723EE00F7A60F /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		945FE81D2B1723FF00F7A60F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		9496CCC72B0F414800CA2B32 /* StoryBoard+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoryBoard+.swift"; sourceTree = "<group>"; };
 		9496CCC92B0F420C00CA2B32 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		94A060E72B0F351000C8AF60 /* Todo_MVVM_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo_MVVM_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,7 +127,9 @@
 			isa = PBXGroup;
 			children = (
 				94A0610C2B0F382900C8AF60 /* Detail.storyboard */,
+				945FE81B2B1723EE00F7A60F /* DetailModel.swift */,
 				94A0610A2B0F381300C8AF60 /* DetailViewController.swift */,
+				945FE81D2B1723FF00F7A60F /* DetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94A061062B0F37C200C8AF60 /* CreateViewModel.swift in Sources */,
+				945FE81C2B1723EE00F7A60F /* DetailModel.swift in Sources */,
 				94A061042B0F37A100C8AF60 /* CreateViewController.swift in Sources */,
 				94A060FF2B0F374600C8AF60 /* Task.swift in Sources */,
 				94A061082B0F37E000C8AF60 /* CreateModel.swift in Sources */,
@@ -283,6 +290,7 @@
 				9496CCC82B0F414800CA2B32 /* StoryBoard+.swift in Sources */,
 				94A0610B2B0F381300C8AF60 /* DetailViewController.swift in Sources */,
 				94A061122B0F38C100C8AF60 /* MainViewController.swift in Sources */,
+				945FE81E2B1723FF00F7A60F /* DetailViewModel.swift in Sources */,
 				94A061142B0F38D700C8AF60 /* MainViewModel.swift in Sources */,
 				9496CCCA2B0F420C00CA2B32 /* Router.swift in Sources */,
 			);
