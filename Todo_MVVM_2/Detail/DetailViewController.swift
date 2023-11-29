@@ -49,8 +49,10 @@ class DetailViewController: UIViewController {
         }).disposed(by: disposeBag)
         
         // 削除ボタンがタップされたら、タスクを渡す
-        
-        
+        deleteButton.rx.tap.subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.detailViewModel.input.deleteButtonTap_Rx.accept(self.selectedTask)
+        }).disposed(by: disposeBag)
     }
     
     // 出力に関するバインディング(ViewModelから来た値をUIに表示)
@@ -64,7 +66,12 @@ class DetailViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // 削除が完了したら、KRを表示して前の画面に戻る
-        
+        detailViewModel.output.deleteCompleted_Rx
+            .subscribe(onNext: {
+                KRProgressHUD.showSuccess(withMessage: "削除に成功しました")
+                self.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
 }
