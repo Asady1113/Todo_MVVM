@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import KRProgressHUD
 
 class CreateViewController: UIViewController {
     
@@ -41,7 +42,13 @@ class CreateViewController: UIViewController {
     
     // 出力に関するバインディング(ViewModelから来た値をUIに表示)
     private func bindOutput() {
-        // 保存されたら前の画面に戻る
+        // 保存されたら完了のKRで前の画面に戻る
+        createViewModel.output.createCompleted_Rx
+            .subscribe(onNext: {
+                KRProgressHUD.showSuccess(withMessage: "保存に成功しました")
+                self.dismiss(animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
 }

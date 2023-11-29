@@ -47,7 +47,7 @@ class CreateViewModel: CreateViewModelInput, CreateViewModelOutput, CreateViewMo
             .subscribe(onNext: { textDataTuple in
                 self.createTask(title: textDataTuple.0, memo: textDataTuple.1)
                 // 保存したら、Viewに向けて出力する
-                
+                self.output.createCompleted_Rx.accept(())
             })
             .disposed(by: disposeBag)
     }
