@@ -75,7 +75,9 @@ class DetailViewModel: DetailViewModelInput, DetailViewModelOutput, DetailViewMo
     }
     
     private func deleteTask(selectedTask: Task) {
-        print("削除します！")
+        if let id = selectedTask.id {
+            DetailModel.deleteTask(id: id)
+        }
     }
     
 }

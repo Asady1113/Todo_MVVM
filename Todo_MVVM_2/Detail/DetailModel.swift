@@ -21,4 +21,14 @@ class DetailModel {
         }
     }
     
+    // 削除の関数
+    static func deleteTask(id: String) {
+        if let realm = try? Realm(), let selectedTask = realm.objects(Task.self).filter("id == %@", id).first {
+            try? realm.write {
+                realm.delete(selectedTask)
+                print("success")
+            }
+        }
+    }
+    
 }
