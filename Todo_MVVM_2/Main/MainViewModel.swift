@@ -19,6 +19,8 @@ protocol MainViewModelInput {
 protocol MainViewModelOutput {
     var selectedTask_Rx: PublishRelay<Task> { get }
     var readCompleted_Rx: PublishRelay<Void> { get }
+    func getCellCount() -> Int
+    func getCell(tableView: UITableView, indexPath: IndexPath) -> (cell: UITableViewCell, title: String)
 }
 
 protocol MainViewModelType {

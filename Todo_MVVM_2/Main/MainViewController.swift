@@ -72,12 +72,12 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // セル数取得
-        return mainViewModel.getCellCount()
+        return mainViewModel.output.getCellCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セル内容取得
-        let result = mainViewModel.getCell(tableView: tableView, indexPath: indexPath)
+        let result = mainViewModel.output.getCell(tableView: tableView, indexPath: indexPath)
         let cell = result.cell
         let title = result.title
         
